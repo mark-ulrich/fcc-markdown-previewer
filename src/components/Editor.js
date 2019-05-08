@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export class Editor extends Component {
-  // componentDidMount() {
-  //   const editor = document.querySelector('#editor');
-  //   editor.value = DEFAULT_SOURCE;
-  // }
+  static propTypes = {
+    markdownSource: PropTypes.string.isRequired,
+    onEditorContentsModified: PropTypes.func.isRequired
+  };
 
   render() {
     return (
@@ -22,10 +22,5 @@ export class Editor extends Component {
     );
   }
 }
-
-Editor.propTypes = {
-  markdownSource: PropTypes.string.isRequired,
-  onEditorContentsModified: PropTypes.func.isRequired
-};
 
 export default Editor;
