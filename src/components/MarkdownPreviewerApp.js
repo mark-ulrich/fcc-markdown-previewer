@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Editor from './Editor';
 import Preview from './Preview';
+import Pane from './panes/Pane';
 
 const DEFAULT_SOURCE = `
 # Welcome to my React Markdown Previewer!
@@ -65,13 +66,24 @@ export class MarkdownPreviewerApp extends Component {
   };
 
   render() {
+    const editorComponent = (
+      <Editor
+        markdownSource={this.state.markdownSource}
+        onEditorContentsModified={this.onEditorContentsModified}
+      />
+    );
+    const previewerComponent = (
+      <Preview markdownSource={this.state.markdownSource} />
+    );
+
     return (
       <div>
-        <Editor
-          markdownSource={this.state.markdownSource}
-          onEditorContentsModified={this.onEditorContentsModified}
+        <Pane name='Editor' title='Editor' contentComponent={editorComponent} />
+        <Pane
+          name='Previewer'
+          title='Preview'
+          contentComponent={previewerComponent}
         />
-        <Preview markdownSource={this.state.markdownSource} />
       </div>
     );
   }
