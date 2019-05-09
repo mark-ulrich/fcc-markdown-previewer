@@ -77,7 +77,7 @@ export class MarkdownPreviewerApp extends Component {
     );
 
     return (
-      <div>
+      <div id='app-container'>
         <Pane name='Editor' title='Editor' contentComponent={editorComponent} />
         <Pane
           name='Previewer'

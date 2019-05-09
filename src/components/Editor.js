@@ -13,8 +13,6 @@ export class Editor extends Component {
         <textarea
           name='editor'
           id='editor'
-          cols='30'
-          rows='10'
           value={this.props.markdownSource}
           onChange={this.props.onEditorContentsModified}
         />
