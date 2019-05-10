@@ -21,7 +21,30 @@ export class Pane extends Component {
   }
 
   componentDidUpdate() {
-    if (!this.props.isExpanded) {
+    const id = this.props.name ? `pane-${this.props.name.toLowerCase()}` : '';
+    const pane = document.getElementById(id);
+
+    const otherPanes = Array.from(
+      document.getElementsByClassName('pane')
+    ).filter((pane) => pane.id !== id);
+
+    if (this.state.isMaximized) {
+      // Force expanded state
+      if (!this.state.isExpanded) {
+        this.setState({ isExpanded: true });
+      }
+
+      // Hide all other panes
+      otherPanes.forEach((pane) => pane.classList.add('pane-hidden'));
+
+      // Add .pane-maximized class to this pane
+      pane.classList.add('pane-maximized');
+    } else {
+      // Show all other panes
+      otherPanes.forEach((pane) => pane.classList.remove('pane-hidden'));
+
+      // Remove .pane-maximized class from this pane
+      pane.classList.remove('pane-maximized');
     }
   }
 
@@ -29,6 +52,7 @@ export class Pane extends Component {
    *  Toggle pane between normal and maximized state
    */
   toggleMaximized = () => {
+    console.log('max');
     const isMaximized = !this.state.isMaximized;
     this.setState({ isMaximized });
   };

@@ -5,7 +5,9 @@
 html,
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  height: 100%;
+  width: 100%; }
 
 body {
   font-family: 'Lato', serif;
@@ -15,9 +17,3 @@ body {
   max-width: 900px;
   padding: 0 2rem;
   margin: auto; }
-
-#editor {
-  resize: vertical;
-  width: 100%;
-  height: 20rem;
-  margin: 0rem; }

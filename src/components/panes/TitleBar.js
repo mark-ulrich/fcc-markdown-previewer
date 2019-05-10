@@ -12,6 +12,15 @@ export class TitleBar extends Component {
     toggleExpanded: PropTypes.func.isRequired
   };
 
+  componentDidUpdate() {
+    const expandIconDiv = document.getElementsByClassName(
+      'pane-expand-icon'
+    )[0];
+    if (this.props.isMaximized)
+      expandIconDiv.classList.add('pane-titlebar-icon-disabled');
+    else expandIconDiv.classList.remove('pane-titlebar-icon-disabled');
+  }
+
   render() {
     const id = `pane-titlebar-${this.props.title}`;
     const maxIcon = this.props.isMaximized

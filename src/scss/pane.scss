@@ -1,15 +1,6 @@
 @import 'colors';
 @import url('https://fonts.googleapis.com/css?family=Lato:100,100italic,300,300italic,regular,italic,700,700italic,900,900italic');
 
-/**
- *  Headings
- */
-@for $i from 1 through 6 {
-  h#{$i} {
-    margin: 0.5rem;
-  }
-}
-
 .pane {
   background: $color-3;
   margin: 2rem auto;
@@ -53,6 +44,11 @@
       padding: 0.5rem 0.5rem;
       cursor: pointer;
     }
+
+    .pane-titlebar-icon-disabled {
+      color: darken(#eee, 30);
+    }
+
     .pane-titlebar-icon-minmax {
     }
   }
@@ -63,12 +59,25 @@
     width: 100%;
     padding-left: 1rem;
 
+    div {
+      min-height: 50vh;
+    }
     textarea {
+      width: 100%;
+
+      min-height: inherit;
+      height: 100%;
+
       background: $color-3;
       padding: 0;
       border: none;
+      resize: vertical;
     }
   }
+}
+
+.pane-hidden {
+  display: none;
 }
 
 .pane-content-hidden {
@@ -76,6 +85,14 @@
 }
 
 .pane-maximized {
-  max-width: 100%;
-  max-height: 100vh;
+  .pane-content-component {
+    div {
+      // height: 100%;
+      height: 90vh;
+
+      textarea {
+        height: 99%;
+      }
+    }
+  }
 }
